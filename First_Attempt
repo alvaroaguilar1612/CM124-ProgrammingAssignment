@@ -1,0 +1,70 @@
+clc
+
+[row,col] = size(data1); % data1 is the name of the example files we are using
+
+a = data1(1, 1:5);
+r=0;
+if ~mod(col, 5) == 1
+    r = 0;
+end 
+counter = 0; 
+
+for j = 1:1
+for i = 1:5
+    if a{j,i} == 1
+        counter = counter +1;
+    end
+end
+end
+counter
+
+
+% collector = int16.empty(0,5);
+
+new_rows = 2^counter
+
+collector = {new_rows, 5};
+
+% while r < 5
+for p = 1:1 %% rows of a
+    for i = 1:5 %% columns of a and collector
+        
+        
+        for j = 1: new_rows %% rows of collector
+            
+            if a{p,i} == 0
+                collector{j,i} = 0;
+            end
+            if a{p,i} == 1
+                collector{j,i} = 4;
+            end
+            if a{p,i} == 2
+                collector{j,i} = 1;
+            end
+           collector
+        end
+    end
+end
+
+for i = 1:5 %% columns of a and collector
+    
+    
+    for j = 1: new_rows %% rows of collector
+        
+        if collector{j,i} == 4
+            for u = 1: new_rows
+                collector {j,i} = 1;
+                
+            end
+            
+            n = 0;
+            collector
+        end
+    end
+end
+
+
+
+
+count
+collector
